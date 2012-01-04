@@ -8,7 +8,7 @@ query.orderby = 'viewCount'
 query.racy = 'include'
 feed = yt_service.YouTubeQuery(query)
 
-for entry in feed.entry: 
+for entry in feed.entry:
     if entry.media.duration.seconds > 60:
         if "Avatar" in entry.media.title.text:
             print entry.media.title.text
