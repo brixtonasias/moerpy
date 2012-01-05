@@ -1,3 +1,5 @@
+# File to create some test data for local testing if no such folder
+# structure exists yet.
 import os
 
 movie_titles = ['Avatar (2011)', 'Die Hard 4.0', 'Green Street Elite',
