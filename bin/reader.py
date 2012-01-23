@@ -1,7 +1,11 @@
+import site
+site.addsitedir('../')
+
 import os
 import gdata.youtube
 import gdata.youtube.service
 from sys import argv
+from moerpy_core.data import Movie
 
 script_name, folder_to_search = argv
 
@@ -24,24 +28,25 @@ def find_movie_title(file_or_folder):
 
 
 def find_movies_in_folder(listing):
+    return_list = []
+
     for file_or_folder in listing:
+
         if not file_or_folder.startswith('.'):
             print "Current file is: " + file_or_folder
             query.vq = file_or_folder + ', movie, trailer, official'
             feed = yt_service.YouTubeQuery(query)
             movie_name = find_movie_title(file_or_folder)
-            return_list = []
             for entry in feed.entry:
                 if entry.media.duration.seconds > 60:
                     if movie_name in entry.media.title.text:
-                        # TODO: Create movie object and add to
-                        # TODO: return_list
-                        print entry.media.title.text
-                        print entry.GetSwfUrl()
-                        print entry.media.thumbnail[0].url
-                        print entry.media.player.url
-                        break
-            return return_list
+                        m = Movie(file_or_folder,
+                                movie_name,
+                                entry.media.title.text,
+                                entry.GetSwfUrl(),
+                                entry.media.player.url)
+                        return_list.append(m)
+    return return_list
 
 
 find_movies_in_folder(listing)
