@@ -1,9 +1,15 @@
-- Build html page containing a list of all results
-    - can a template engine be used here?
-  - check out jinja 2 for html templating - does it fit here?
+- Add CSS to make the result page prettier
+- Double check if the path for python + ../templates can be made more dynamic
+- Debug results
+- Improve results (currently only 50% of the trailers are returned) - beginner fault in code?
+
 - auto open the html page in browser (open command)
 - add year as an attribute to the search
-- adjust parsing of the folder name for movie title
 
 DONE
 - Add parameter to read movie name from (see reader.py)
+- Build html page containing a list of all results
+    - can a template engine be used here?
+  - check out jinja 2 for html templating - does it fit here?
+- adjust parsing of the folder name for movie title
+
