@@ -1,15 +1,18 @@
-import site
-site.addsitedir('../')
-
 import os
+base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+import site
+site.addsitedir(base)
+
 import gdata.youtube
 import gdata.youtube.service
 from sys import argv
 from moerpy_core.data import Movie
 from jinja2 import Environment, FileSystemLoader
 
+
 env = Environment(loader=FileSystemLoader(
-    '../templates'))
+    os.path.join(base, 'templates')))
 script_name, folder_to_search = argv
 
 yt_service = gdata.youtube.service.YouTubeService()

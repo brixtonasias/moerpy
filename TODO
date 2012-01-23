@@ -1,5 +1,4 @@
 - Add CSS to make the result page prettier
-- Double check if the path for python + ../templates can be made more dynamic
 - Debug results
 - Improve results (currently only 50% of the trailers are returned) - beginner fault in code?
 
@@ -12,4 +11,5 @@ DONE
     - can a template engine be used here?
   - check out jinja 2 for html templating - does it fit here?
 - adjust parsing of the folder name for movie title
+- Double check if the path for python + ../templates can be made more dynamic
 
