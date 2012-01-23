@@ -8,7 +8,7 @@ config = {
     'author': 'Stefan Kohler',
     'author_email': 'sk+moerpy@stfnkhlr.de',
     'version': '0.1',
-    'install_requires': ['nose', 'gdata'],
+    'install_requires': ['nose', 'gdata', 'jinja2'],
     'packages': ['moerpy'],
     'scripts': [],
     'name': 'moerpy'
