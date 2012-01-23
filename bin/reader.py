@@ -6,10 +6,11 @@ import gdata.youtube
 import gdata.youtube.service
 from sys import argv
 from moerpy_core.data import Movie
+from jinja2 import Environment, FileSystemLoader
 
+env = Environment(loader=FileSystemLoader(
+    '../templates'))
 script_name, folder_to_search = argv
-
-print folder_to_search
 
 yt_service = gdata.youtube.service.YouTubeService()
 query = gdata.youtube.service.YouTubeVideoQuery()
@@ -22,7 +23,6 @@ file_listing = os.listdir(folder_to_search)
 def find_movie_title(file_or_folder):
     position = file_or_folder.find('(')
     if position > 0:
-        print '( found at position %s' % position
         return file_or_folder[:position - 1]
     return file_or_folder
 
@@ -33,8 +33,7 @@ def find_movies_in_folder(listing):
     for file_or_folder in listing:
 
         if not file_or_folder.startswith('.'):
-            print "Current file is: " + file_or_folder
-            query.vq = file_or_folder + ', movie, trailer, official'
+            query.vq = file_or_folder + ', movie, trailer'
             feed = yt_service.YouTubeQuery(query)
             movie_name = find_movie_title(file_or_folder)
             for entry in feed.entry:
@@ -46,7 +45,8 @@ def find_movies_in_folder(listing):
                                 entry.GetSwfUrl(),
                                 entry.media.player.url)
                         return_list.append(m)
+                        break
     return return_list
 
-
-find_movies_in_folder(file_listing)
+template = env.get_template('movie_list.html')
+print template.render(movies=find_movies_in_folder(file_listing))

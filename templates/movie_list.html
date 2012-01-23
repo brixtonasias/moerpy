@@ -1,0 +1,16 @@
+<html>
+  <head>MOERPY OUTPUT</head>
+  <body>
+      <h1>MOERPY OUTPUT MOVIES</h1>
+        {% for movie in movies %}
+            <p>
+                <h3>{{ movie.file_name }}</h3>
+                <iframe width="560" height="315" src="{{ movie.swf_url }}"
+                        fameborder="0" allowfullscreen></iframe>
+                <br/>
+                <a href="{{ movie.player_url}}">On YouTube</a>
+            </p>
+        {% endfor %}
+  </body>
+
+</html>
