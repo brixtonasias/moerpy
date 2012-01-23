@@ -16,7 +16,7 @@ query = gdata.youtube.service.YouTubeVideoQuery()
 query.orderby = 'viewCount'
 query.racy = 'include'
 
-listing = os.listdir(folder_to_search)
+file_listing = os.listdir(folder_to_search)
 
 
 def find_movie_title(file_or_folder):
@@ -49,4 +49,4 @@ def find_movies_in_folder(listing):
     return return_list
 
 
-find_movies_in_folder(listing)
+find_movies_in_folder(file_listing)
