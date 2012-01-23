@@ -1,16 +1,43 @@
-<html>
-  <head>MOERPY OUTPUT</head>
-  <body>
-      <h1>MOERPY OUTPUT MOVIES</h1>
-        {% for movie in movies %}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>MOERPY OUTPUT</title>
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- TODO FIX location of CSS file -->
+	<link rel="stylesheet" href="templates/css/style.css">
+
+</head>
+<body>
+<center>
+<div id="container">
+	<header>
+  <h1>MOERPY OUTPUT MOVIES</h1>
+	</header>
+	<div id="main" role="main">
+     {% for movie in movies %}
             <p>
-                <h3>{{ movie.file_name }}</h3>
+                <h2>{{ movie.file_name }}</h2>
                 <iframe width="560" height="315" src="{{ movie.swf_url }}"
                         fameborder="0" allowfullscreen></iframe>
                 <br/>
-                <a href="{{ movie.player_url}}">On YouTube</a>
+                You can also watch on <a href="{{ movie.player_url}}">YouTube</a>!
             </p>
         {% endfor %}
-  </body>
+	</div>
+	<footer>
+    Created by <a href="http://twitter.com/skohler">@skohler</a> using Jinja2 and HTML5Boilerplate.
+	</footer>
+</div> <!--! end of #container -->
+</center>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
+</body>
 </html>
